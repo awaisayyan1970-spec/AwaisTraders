@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AwaisTraders - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            margin: 0;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #d4af37;
+            text-align: center;
+            font-size: 45px;
+        }
+        h2 {
+            color: #d4af37;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #141414;
+            border: 1px solid #d4af37;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #333;
+            text-align: left;
+        }
+        th {
+            background-color: #d4af37;
+            color: #000;
+        }
+        tr:hover {
+            background-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AwaisTraders - Admin Dashboard</h1>
+
+    <h2>Customer Complaints & Staff Tickets</h2>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Customer ID</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Complaint / Issue</th>
+            <th>Status</th>
+        </tr>
+        {% for c in complaints %}
+        <tr>
+            <td>{{ c.email }}</td>
+            <td>{{ c.cust_id }}</td>
+            <td>{{ c.phone }}</td>
+            <td>{{ c.address }}</td>
+            <td>{{ c.complaint }}</td>
+            <td style="color: #28a745; font-weight: bold;">{{ c.status }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6" style="text-align: center; color: #888;">No complaints found yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Registered Customers (Files & Passwords)</h2>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Customer ID</th>
+            <th>Phone</th>
+            <th>Address</th>
+        </tr>
+        {% for email, data in customers.items() %}
+        <tr>
+            <td>{{ email }}</td>
+            <td>{{ data.password }}</td>
+            <td>{{ data.cust_id }}</td>
+            <td>{{ data.phone }}</td>
+            <td>{{ data.address }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" style="text-align: center; color: #888;">No registered customers yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

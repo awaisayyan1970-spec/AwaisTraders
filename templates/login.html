@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AwaisTraders - Login & Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #0b0b0b; color: #ffffff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
+        .card { background: #141414; border: 2px solid #d4af37; padding: 25px; border-radius: 15px; width: 320px; box-shadow: 0 0 25px rgba(212, 175, 55, 0.3); }
+        h1 { font-family: 'Great Vibes', cursive; color: #d4af37; text-align: center; font-size: 38px; margin: 5px 0 15px 0; }
+        h3 { color: #d4af37; font-size: 16px; border-bottom: 1px solid #d4af37; padding-bottom: 5px; margin-top: 0; }
+        label { color: #d4af37; font-size: 12px; display: block; margin-top: 8px; }
+        input, textarea { width: 100%; padding: 7px; margin-top: 3px; background: #000; border: 1px solid #d4af37; color: #fff; border-radius: 4px; box-sizing: border-box; font-size: 13px; }
+        button { width: 100%; background-color: #d4af37; color: #000; padding: 10px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        button:hover { background-color: #fff; }
+        .error { color: #ff4d4d; text-align: center; font-size: 13px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Card -->
+        <div class="card">
+            <h1>AwaisTraders</h1>
+            <h3>Customer / Admin Login</h3>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            <form action="/login" method="POST">
+                <label>Email / Admin ID</label>
+                <input type="text" name="email" required placeholder="Enter email or admin">
+
+                <label>Password</label>
+                <input type="password" name="password" required placeholder="Enter password">
+
+                <label>Security Captcha: <b>{{ captcha }}</b></label>
+                <input type="number" name="captcha" required placeholder="Answer">
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- Registration Card -->
+        <div class="card">
+            <h1>AwaisTraders</h1>
+            <h3>New Customer Registration</h3>
+            <form action="/register" method="POST">
+                <label>Email Address</label>
+                <input type="email" name="email" required placeholder="Your email">
+
+                <label>Custom Password</label>
+                <input type="password" name="password" required placeholder="Create password">
+
+                <label>Customer ID</label>
+                <input type="text" name="cust_id" required placeholder="e.g. CUST-001">
+
+                <label>Phone Number</label>
+                <input type="text" name="phone" required placeholder="0300-1234567">
+
+                <label>Address</label>
+                <input type="text" name="address" required placeholder="Your address">
+
+                <label>Security Captcha: <b>{{ captcha }}</b></label>
+                <input type="number" name="captcha" required placeholder="Answer">
+
+                <button type="submit" style="background-color: #28a745; color: #fff;">Register Account</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

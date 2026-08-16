@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AwaisTraders - Submit Complaint</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #141414;
+            border: 2px solid #d4af37;
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #d4af37;
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        label {
+            color: #d4af37;
+            font-size: 13px;
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            background: #000;
+            border: 1px solid #d4af37;
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+            box-shadow: 0 0 15px #28a745;
+        }
+        .success {
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>AwaisTraders</h1>
+        
+        {% if success %}
+            <p class="success">{{ success }}</p>
+        {% endif %}
+
+        <form action="/submit-complaint" method="POST">
+            <input type="hidden" name="email" value="{{ email }}">
+            
+            <label>Customer ID</label>
+            <input type="text" name="cust_id" value="{{ cust_id }}" required placeholder="Enter Customer ID">
+
+            <label>Phone Number</label>
+            <input type="text" name="phone" value="{{ phone }}" required placeholder="Enter Phone Number">
+
+            <label>Address</label>
+            <input type="text" name="address" value="{{ address }}" required placeholder="Enter Address">
+
+            <label>Write Your Complaint</label>
+            <textarea name="complaint_text" rows="3" required placeholder="Describe your internet issue..."></textarea>
+
+            <button type="submit">Submit Complaint</button>
+        </form>
+    </div>
+
+</body>
+</html>
